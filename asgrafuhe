@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo Coin Betting</title>
+<style>
+body{
+    font-family:Arial;
+    text-align:center;
+    background:#111;
+    color:white;
+}
+.box{
+    margin-top:50px;
+}
+button{
+    padding:10px 20px;
+    margin:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h1>Demo Betting Site</h1>
+    <h2>Balance: <span id="balance">1000</span> Coins</h2>
+
+    <button onclick="bet('A')">Bet Team A (100)</button>
+    <button onclick="bet('B')">Bet Team B (100)</button>
+
+    <p id="result"></p>
+</div>
+
+<script>
+let balance = 1000;
+
+function bet(team){
+    if(balance < 100){
+        alert("Not enough coins");
+        return;
+    }
+
+    balance -= 100;
+
+    let win = Math.random() < 0.5;
+
+    if(win){
+        balance += 200;
+        document.getElementById("result").innerHTML =
+        "You won on Team " + team;
+    }else{
+        document.getElementById("result").innerHTML =
+        "You lost on Team " + team;
+    }
+
+    document.getElementById("balance").innerHTML = balance;
+}
+</script>
+
+</body>
+</html>
